@@ -18,53 +18,22 @@ module module_7_segments # (
     reg [3 : 0] digito_o;
 
     reg en_conmutador;
-    reg decena_unidad;
+    reg [1 : 0]decena_unidad;
 
-    //Output refresh counter
-    always @ (posedge clk_i) begin
-        
-        if(!rst_i) begin
-        
+    // Contador de refresco
+    always @ (posedge clk_i or negedge rst_i) begin
+        if (!rst_i) begin
             cuenta_salida <= DISPLAY_REFRESH - 1;
             en_conmutador <= 0;
-        end
-
-        else begin 
-
-            if(cuenta_salida == 0) begin
-                
-                cuenta_salida <= DISPLAY_REFRESH - 1;
-                en_conmutador <= 1;
-            end
-
-            else begin
-
-                cuenta_salida <= cuenta_salida - 1'b1;
-                en_conmutador <= 0;
-            end
+        end else begin
+            cuenta_salida <= (cuenta_salida == 0) ? (DISPLAY_REFRESH - 1) : (cuenta_salida - 1'b1);
+            en_conmutador <= (cuenta_salida == 0);
         end
     end
 
-    //1 bit counter
+    // Contador de 1 bit 
     always @ (posedge clk_i) begin
-        
-        if(!rst_i) begin
-        
-            decena_unidad <= 0;
-        end
-
-        else begin 
-
-            if(en_conmutador == 1'b1) begin
-                
-                decena_unidad <= decena_unidad + 1'b1;
-            end
-
-            else begin
-
-                decena_unidad <= decena_unidad;
-            end
-        end
+        decena_unidad <= (rst_i) ? ((en_conmutador) ? (decena_unidad + 1'b1) : decena_unidad) : 2'b00;
     end
 
      //Multiplexed digits
