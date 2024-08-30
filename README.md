@@ -20,6 +20,7 @@ module mi_modulo(
     );
 ```
 #### 3.1.2. Module_7_segments
+```SystemVerilog
 module module_7_segments # 
 (
 
@@ -99,7 +100,7 @@ module module_7_segments #
         catodo_o[6] = ~(digito_o == 4'd2 || digito_o == 4'd3 || digito_o == 4'd4 || digito_o == 4'd5 || digito_o == 4'd6 || digito_o == 4'd8 || digito_o == 4'd9);
     end
 endmodule
-
+```
 #### 2. Parámetros
 - Lista de parámetros
 
