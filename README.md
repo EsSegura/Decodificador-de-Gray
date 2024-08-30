@@ -140,16 +140,16 @@ module mi_modulo(
 #### 3.3.4. Criterios de diseño
 Diagramas, texto explicativo...
 
-#### 5. Testbench
+### 4. Testbench
 Descripción y resultados de las pruebas hechas
 
 ### Otros modulos
 - agregar informacion siguiendo el ejemplo anterior.
 
 
-## 4. Consumo de recursos
+## 5. Consumo de recursos
 
-## 5. Problemas encontrados durante el proyecto
+## 6. Problemas encontrados durante el proyecto
 
 ## Apendices:
 ### Apendice 1:
