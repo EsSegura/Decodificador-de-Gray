@@ -19,7 +19,18 @@ module mi_modulo(
     output logic    salida_i 
     );
 ```
-#### 3.1.2. Module_7_segments
+#### 3.1.2. Parámetros
+- Lista de parámetros
+
+#### 3.1.3. Entradas y salidas:
+- `entrada_i`: descripción de la entrada
+- `salida_o`: descripción de la salida
+
+#### 3.1.4. Criterios de diseño
+Diagramas, texto explicativo...
+
+### 3.2 Módulo 2
+#### 3.2.1 Module_7_segments
 ```SystemVerilog
 module module_7_segments # 
 (
@@ -101,14 +112,32 @@ module module_7_segments #
     end
 endmodule
 ```
-#### 2. Parámetros
+#### 3.1.2. Parámetros
 - Lista de parámetros
 
-#### 3. Entradas y salidas:
+#### 3.1.3. Entradas y salidas:
 - `entrada_i`: descripción de la entrada
 - `salida_o`: descripción de la salida
 
-#### 4. Criterios de diseño
+#### 3.1.4. Criterios de diseño
+Diagramas, texto explicativo...
+
+### 3.3 Módulo 3
+#### 3.3.1. Encabezado del módulo
+```SystemVerilog
+module mi_modulo(
+    input logic     entrada_i,      
+    output logic    salida_i 
+    );
+```
+#### 3.3.2. Parámetros
+- Lista de parámetros
+
+#### 3.3.3. Entradas y salidas:
+- `entrada_i`: descripción de la entrada
+- `salida_o`: descripción de la salida
+
+#### 3.3.4. Criterios de diseño
 Diagramas, texto explicativo...
 
 #### 5. Testbench
