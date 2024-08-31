@@ -501,11 +501,11 @@ Señal de reset asíncrona. Cuando se activa, todos los submódulos internos y e
 - `anodo_po [1 : 0]`
  Señal de salida que controla los ánodos de un display de 7 segmentos multiplexado. Esta salida permite seleccionar cuál de los dos dígitos, ya sea unidades o decenas, del display estará activo en cada momento
 - `catodo_po [6 : 0]`
-  Señal de salida que controla los cátodos de un display de 7 segmentos. Cada bit en esta salida corresponde a un segmento del display (a, b, c, d, e, f, g). La señal se genera en el submódulo module_7_segments y determina qué segmentos estarán encendidos para formar los dígitos del número que se va a mostrar.
+  Señal de salida que controla los cátodos de un display de 7 segmentos. Cada bit en esta salida corresponde a un segmento del display (a, b, c, d, e, f, g). La señal se genera en el submódulo module_7_segments y determina qué segmentos estarán encendidos para formar los dígitos del número que se va a mostrar.  
 - `codigo_bin_led_po [3 : 0]`
   Salida que muestra el código binario decodificado a partir del código Gray de entrada.
 #### Criterios de diseño
-Diagramas, texto explicativo...
+Este módulo toma un código Gray de 4 bits, lo convierte a binario y luego a BCD para ser desplegado en dos display de 7 segmentos, uno para las decenas y otro para las unidades. Esto a partir de tres submódulos que se encargan de decodificar el codigo Gray a binario, de binario a BCD y con este ultimo cargar la entrada BCD a los display correspondientes. Los submódulos se utilizan para dividir las tareas en pasos manejables, de manera que puede asegurar una estructura estable. Ahora describiendo un poco el proceso realizado por cada submódulo en conjunto, primeramente el submódulo module_input_deco_gray recibe el código Gray de entrada (codigo_gray_pi) y lo convierte a un código binario equivalente cuya salida resultante se almacena en codigo_bin. Seguido de esto, el submódulo module_bin_to_bcd toma la salida binaria (codigo_bin) y la convierte en un valor BCD la cual se almacena en codigo_bcd. Finalmente, el submódulo module_7_segments recibe la entrada BCD (codigo_bcd) y a través de las señales anodo_po y catodo_po controla los segmentos del display de 7 segmentos, con esto el valor BCD convertido se visualiza de manera legible en el display correspondiente, ya sea unidades o decenas. 
 
 ## 5. Consumo de recursos
 
