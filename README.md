@@ -484,8 +484,8 @@ endmodule
 6. anodo_po [1 : 0] : Controla los anodos del display de 7 segmentos.
 7. catodo_po [6 : 0] :  Controla los catodos del display de 7 segmentos.
 8. codigo_bin_led_po [3 : 0] : Salida que muestra el código binario resultante en los LEDs.
-9. codigo_bin [3 : 0] :
-10. codigo_bcd [7 : 0] :
+9. codigo_bin [3 : 0] : Almacena el código binario resultante después de la decodificación del código Gray.
+10. codigo_bcd [7 : 0] : Almacena el valor BCD convertido desde el código binario.
 
 
 #### Entradas y salidas:
