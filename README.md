@@ -319,7 +319,12 @@ module module_bin_to_bcd #(
 endmodule
 ```
 #### 3.3.2. Parámetros
-- Lista de parámetros
+1.WIDTH: Especifica el ancho del dato binario de entrada, configurado como 4 bits.
+2.clk_i: Señal de reloj.
+3.rst_i: Señal de reset asíncrona, que reinicia el módulo.
+4.bin_i: Entrada binaria de 4 bits que se va a convertir a BCD.
+5.bcd_o: Salida en formato BCD, donde los 4 bits menos significativos
+
 
 #### 3.3.3. Entradas y salidas:
 - `entrada_i`: descripción de la entrada
