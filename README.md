@@ -12,22 +12,74 @@
 El sistema implementado consiste en tres módulos en Verilog que interactúan para la conversión y visualización de datos en un display de 7 segmentos. El módulo module_input_deco_gray realiza la conversión de un código Gray de 4 bits a su equivalente binario, sincronizando la entrada mediante un contador de refresco. El módulo module_bin_to_bcd toma este valor binario de 4 bits y lo convierte a un formato BCD de 8 bits, segregando los dígitos en decenas y unidades. Finalmente, el módulo module_7_segments utiliza este valor BCD para controlar un display de 7 segmentos multiplexado, manejando la conmutación entre dígitos y activando los segmentos correspondientes a cada dígito en función del valor BCD recibido, con un control preciso del tiempo de refresco del display. Este flujo garantiza una conversión precisa desde el código Gray hasta la visualización en un display de 7 segmentos de forma decimal.
 
 ### 3.1 Módulo 1
-#### 3.1.1. Encabezado del módulo
+#### 3.1.1. module_input_deco_gray
 ```SystemVerilog
-module mi_modulo(
-    input logic     entrada_i,      
-    output logic    salida_i 
-    );
+module module_input_deco_gray # (
+    parameter WIDTH = 4,                // Ancho del código Gray y del código binario
+    parameter INPUT_REFRESH = 2700000   // Frecuencia de actualización para el contador
+)(
+    input                  clk_i,        // Señal de reloj
+    input                  rst_i,        // Señal de reinicio asíncrono
+    input [WIDTH - 1 : 0]  codigo_gray_i, // Entrada de código Gray
+
+    output reg [WIDTH - 1 : 0] codigo_bin_o // Salida de código binario
+);
+
+    // Parámetros
+    localparam WIDTH_INPUT_COUNTER = $clog2(INPUT_REFRESH); // Tamaño del contador de entrada
+
+    // Señales internas
+    reg [WIDTH - 1 : 0]               codigo_gray_sync_r; // Registro para almacenar el código Gray sincronizado
+    reg [WIDTH_INPUT_COUNTER - 1 : 0] cuenta_entrada;    // Contador para la actualización de la entrada
+
+    reg en_lectura; // Señal de habilitación de lectura
+
+    // Contador de actualización
+    always @(posedge clk_i) begin
+        cuenta_entrada <= rst_i ? (cuenta_entrada == 0 ? (INPUT_REFRESH - 1) : (cuenta_entrada - 1)) : (INPUT_REFRESH - 1);
+        en_lectura <= (cuenta_entrada == 0) && rst_i;
+    end
+
+    // Sincronización de entrada
+    always @(posedge clk_i) begin
+        codigo_gray_sync_r <= rst_i ? (en_lectura ? codigo_gray_i : codigo_gray_sync_r) : 0;
+    end
+
+    // Conversión de Gray a binario usando lógica booleana
+    always_comb begin
+        // Cálculo del código binario a partir del código Gray
+        logic bit_a, bit_b, bit_c, bit_d;
+        bit_a = codigo_gray_sync_r[3];
+        bit_b = codigo_gray_sync_r[2];
+        bit_c = codigo_gray_sync_r[1];
+        bit_d = codigo_gray_sync_r[0];
+
+        // Aplicar las fórmulas para convertir Gray a binario
+        codigo_bin_o[3] = bit_a; // MSB del binario es igual al MSB del Gray
+        codigo_bin_o[2] = (bit_a & ~bit_b) | (~bit_a & bit_b); // Segunda posición del binario
+        codigo_bin_o[1] = codigo_bin_o[2] ^ bit_c; // Tercera posición del binario
+        codigo_bin_o[0] = codigo_bin_o[1] ^ bit_d; // LSB del binario
+    end
+
+endmodule
 ```
 #### 3.1.2. Parámetros
-- Lista de parámetros
+
+1. WIDTH Ancho del código Gray y del código binario
+2. INPUT_REFRESH es la frecuencia de actualización para el contador
+3. clk_i: Pulso de reloj que sincroniza las operaciones.
+4. rst_i: Pulso de reinicio asincrono.
+5. codigo_gray_i Entrada del código gray, definido para 4 bits, aqui se guarda lo que recibe la fpga.
+6. codigo_bin_o Salida a LEDs en codificacion binaria, aqui se guarda la entrada decodificada a binario.
 
 #### 3.1.3. Entradas y salidas:
-- `entrada_i`: descripción de la entrada
-- `salida_o`: descripción de la salida
+
+- `codigo_gray_i`: Se configura la entrada de la fpga, la cual va de codigo_gray_i[0] a codigo_gray_i[3], donde el [0] corresponde al bit menos significativo de codigo ingresado, y el [3] es el mas significativo.
+- `codigo_bin_o`: Se establece cada uno como salida para los led que forman parte de la fpga, al igual que en el código gray el [0] es el menos significativo, y el [3] el más significatico.
 
 #### 3.1.4. Criterios de diseño
-Diagramas, texto explicativo...
+![Diagrama de gray to bin decoder](https://github.com/user-attachments/assets/7e91c164-f2bf-44fe-9dbb-b73324f14cdf)
+
 
 ### 3.2 Módulo 2
 #### 3.2.1 Module_7_segments
