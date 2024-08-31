@@ -164,7 +164,7 @@ module module_7_segments #
     end
 endmodule
 ```
-#### 3.1.2. Parámetros
+#### 3.2.2. Parámetros
 
 1.DISPLAY_REFRESH: Define la cantidad de ciclos de reloj para refrescar el display.
 2.WIDTH_DISPLAY_COUNTER: Calcula el número de bits necesarios para contar hasta DISPLAY_REFRESH.
@@ -178,7 +178,7 @@ endmodule
 10.en_conmutador: Señal que indica cuándo cambiar entre dígitos.
 11.decena_unidad [1:0]: Registro que indica si se está mostrando la unidad o la decena.
 
-#### 3.1.3. Entradas y salidas:
+#### 3.2.3. Entradas y salidas:
 ##### Descripción de la entrada:
 - `clk_i `
 Señal de reloj. Esta señal sincroniza todas las operaciones internas del módulo. Es una señal de tipo input, normalmente conectada al reloj del sistema. Su frecuencia determina la velocidad de actualización del display de 7 segmentos.
@@ -193,7 +193,7 @@ Controla los ánodos de los dos dígitos del display de 7 segmentos. Esta señal
 - `catodo_o [6:0]`
 Controla los cátodos de los segmentos del display de 7 segmentos. Esta señal determina qué segmentos del display están encendidos para representar el dígito actual. La salida es de 7 bits, cada bit controla un segmento específico del display, donde un valor bajo (0) enciende el segmento y un valor alto (1) lo apaga. La configuración de los bits en catodo_o permite mostrar los dígitos del 0 al 9.
 
-#### 3.1.4. Criterios de diseño
+#### 3.2.4. Criterios de diseño
 Diagramas, texto explicativo...
 
 ### 3.3 Módulo 3
@@ -340,6 +340,9 @@ Entrada que recibe el número binario que se desea convertir a BCD. La longitud 
 ##### Descripción de la salida:
 - `bcd_o [7:0]`
  Salida que proporciona la representación BCD del número binario de entrada. Está formada por dos grupos de 4 bits: Bits [3:0]: Representan las unidades del número en formato BCD. Bits [7:4]: Representan las decenas del número en formato BCD. Los valores se actualizan en los flancos ascendentes del reloj (clk_i) y están sincronizados con el reset (rst_i).
+
+#### 3.3.4. Criterios de diseño
+Diagramas, texto explicativo...
 
 
 ### 4. Testbench
