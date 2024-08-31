@@ -342,9 +342,9 @@ Entrada que recibe el número binario que se desea convertir a BCD. La longitud 
  Salida que proporciona la representación BCD del número binario de entrada. Está formada por dos grupos de 4 bits: Bits [3:0]: Representan las unidades del número en formato BCD. Bits [7:4]: Representan las decenas del número en formato BCD. Los valores se actualizan en los flancos ascendentes del reloj (clk_i) y están sincronizados con el reset (rst_i).
 
 #### 3.3.4. Criterios de diseño
-El módulo module_bin_to_bcd convierte una entrada binaria de 4 bits a BCD, que sincroniza las salidas con el reloj del sistema utilizando lógica combinacional para asignar los valores de las unidades y las decenas basados en la entrada binaria que registra estos valores con el reloj para garantizar una salida estable y sincronizada. 
+El módulo module_bin_to_bcd convierte una entrada binaria de 4 bits a BCD, que sincroniza las salidas con el reloj del sistema utilizando lógica combinacional para asignar los valores de las unidades y las decenas basados en la entrada binaria que registra estos valores para garantizar una salida estable y sincronizada. 
  Para ello, se utiliza una instrucción case con la cual se puede asignar valores de unidades y decenas en función de la entrada binaria bin_i a los valores BCD del display de 7 segmentos, estos valores de unidades y decenas se calculan para cada valor bin_i (0 a 15) posible. En el caso por defecto, ambos se establecen en 0. 
- En cuanto a la sincronización, cuando rst_i está activo, los registros unidades_sync y decenas_sync se reinician a 0, si rst_i no está activo, los registros sincronizan los valores de unidades y decenas con el reloj, con el fin de poder asegurar que las salidas cambien de manera sincronizada y controlada
+ En cuanto a la sincronización, cuando rst_i está activo, los registros unidades_sync y decenas_sync se reinician a 0, si rst_i no está activo, los registros sincronizan los valores de unidades y decenas con el reloj
  Por último, para la lógica de salida, si rst_i está bajo, entonces la salida bcd_o se restablece a 0, en caso contrario, bcd_o se actualiza con los valores sincronizados de unidades_sync y decenas_sync, donde los bits [3:0] corresponden a las unidades y los bits [7:4] a las decenas.
 
 
