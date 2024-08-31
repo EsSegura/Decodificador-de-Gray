@@ -329,11 +329,18 @@ endmodule
 
 
 #### 3.3.3. Entradas y salidas:
-- `entrada_i`: descripción de la entrada
-- `salida_o`: descripción de la salida
+##### Descripción de la entrada:
+- `clk_i `
+Señal de reloj que sincroniza el funcionamiento del módulo. Las operaciones internas, como la actualización de los registros, se realizan en el flanco ascendente del reloj.
+- `rst_i`
+Señal de reinicio. Señal de reset asíncrona. Cuando se activa (nivel bajo), el módulo se reinicia y la salida se establece en 0. El reset permite poner el sistema en un estado conocido antes de iniciar cualquier operación.
+- `bin_i [WIDTH - 1 : 0]`
+Entrada que recibe el número binario que se desea convertir a BCD. La longitud de esta entrada está parametrizada por WIDTH, lo que permite flexibilidad para admitir diferentes anchos de datos.
 
-#### 3.3.4. Criterios de diseño
-Diagramas, texto explicativo...
+##### Descripción de la salida:
+- `bcd_o [7:0]`
+ Salida que proporciona la representación BCD del número binario de entrada. Está formada por dos grupos de 4 bits: Bits [3:0]: Representan las unidades del número en formato BCD. Bits [7:4]: Representan las decenas del número en formato BCD. Los valores se actualizan en los flancos ascendentes del reloj (clk_i) y están sincronizados con el reset (rst_i).
+
 
 ### 4. Testbench
 Con los modulos listos, se trabajo en un testbench para poder ejecutar todo de la misma forma y al mismo tiempo, y con ello, poder observar las simulaciones y obtener una mejor visualización de como funciona todo el código. 
