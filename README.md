@@ -200,12 +200,12 @@ Diagramas, texto explicativo...
 #### 3.3.1. module_bin_to_bcd
 ```SystemVerilog
 module module_bin_to_bcd #(
-    parameter WIDTH = 4
+    parameter WIDTH = 4 // Ancho de los datos de entrada binarios
 )(
-    input clk_i,
-    input rst_i,
-    input [WIDTH - 1 : 0] bin_i,
-    output reg [7 : 0] bcd_o
+    input clk_i, // Señal de reloj
+    input rst_i, // Señal de reinicio asíncrono
+    input [WIDTH - 1 : 0] bin_i, // Entrada binaria
+    output reg [7 : 0] bcd_o // Salida en formato BCD (4 bits para decenas y 4 bits para unidades)
 );
 
     // Señales internas para las decenas y las unidades
@@ -476,12 +476,34 @@ module module_top_deco_gray # (
 endmodule
 ```
 #### Parámetros
-- Lista de parámetros
+1. INPUT_REFRESH: Se usa para definir la frecuencia de refresco del módulo de entrada, configurado a 2,700,000.
+2. DISPLAY_REFRESH: Parámetro para definir la frecuencia de refresco del display de 7 segmentos, configurado a 27,000. 
+3. clk_pi: Señal de reloj.
+4. rst_pi: Señal de reset de entrada, que reinicia el estado de los módulos.
+5. codigo_gray_pi [3 : 0] :  Código Gray de 4 bits de entrada que se va a decodificar.
+6. anodo_po [1 : 0] : Controla los anodos del display de 7 segmentos.
+7. catodo_po [6 : 0] :  Controla los catodos del display de 7 segmentos.
+8. codigo_bin_led_po [3 : 0] : Salida que muestra el código binario resultante en los LEDs.
+9. codigo_bin [3 : 0] :
+10. codigo_bcd [7 : 0] :
+
 
 #### Entradas y salidas:
-- `entrada_i`: descripción de la entrada
-- `salida_o`: descripción de la salida
+##### Descripción de la entrada:
+- `clk_i `
+Señal de reloj que sincroniza todo el módulo. Esta señal es utilizada para que todos los submódulos puedan operar de manera sincronizada y coordinar el flujo de datos a través del sistema.
+- `rst_i`
+Señal de reset asíncrona. Cuando se activa, todos los submódulos internos y el módulo principal se reinician, asegurando que el sistema regrese a un estado conocido antes de iniciar cualquier operación.
+- `codigo_gray_pi [3 : 0]`
+ Entrada que recibe un código Gray de 4 bits. Este código es decodificado a su equivalente binario por un submódulo interno, module_input_deco_gray
 
+##### Descripción de la salida:
+- `anodo_po [1 : 0]`
+ Señal de salida que controla los ánodos de un display de 7 segmentos multiplexado. Esta salida permite seleccionar cuál de los dos dígitos, ya sea unidades o decenas, del display estará activo en cada momento
+- `catodo_po [6 : 0]`
+  Señal de salida que controla los cátodos de un display de 7 segmentos. Cada bit en esta salida corresponde a un segmento del display (a, b, c, d, e, f, g). La señal se genera en el submódulo module_7_segments y determina qué segmentos estarán encendidos para formar los dígitos del número que se va a mostrar.
+- `codigo_bin_led_po [3 : 0]`
+  Salida que muestra el código binario decodificado a partir del código Gray de entrada.
 #### Criterios de diseño
 Diagramas, texto explicativo...
 
