@@ -416,8 +416,8 @@ module test;
 endmodule
 ```
 #### Descripción del testbench 
-El testbench cuenta con; una directiva de tiempo a una de escala de 1 nanosegundo a 1 nanosegundo, tres entradas de registros, siendo el reloj inicializado en 0, un reset y una entrada de código Gray de 4 bits, tres salidas que corresponden a cables que capturan las salidas del módulo bajo prueba, los cuales son anodo_o que controla los ánodos del display de 7 segmentos, catodo_o la cual funciona similar pero en este controlando los cátodos del display, finalmemte codigo_bin_led_o salida del codigo binario a los LEDs.
-. Instanciación
+El testbench cuenta con; una directiva de tiempo a una de escala de 1 nanosegundo a 1 nanosegundo, tres entradas de registros, siendo el reloj inicializado en 0, un reset y una entrada de código Gray de 4 bits, tres salidas que corresponden a cables que capturan las salidas del módulo bajo prueba, los cuales son anodo_o que controla los ánodos del display de 7 segmentos, catodo_o la cual funciona similar pero en este controlando los cátodos del display, finalmente codigo_bin_led_o salida del codigo binario a los LEDs. Luego se hace la instanciación del modulo top con los parámetros y conexiones correspondientes. Se crea un clk que se invierte en cada ciclo a los 10 ns, lo que quiere decir que el periodo es de 20 ns, por lo que el reloj tiene un frecuencia de 50 kHz. Como parte de la inicialización de las entradas, el rst_i se puso inicialmente en bajo durante 30 ns para simular un reset al inicio, para codigo_gray_i se proporcionaron diferentes valores de código Gray cada 100ns. Por último, $dumpfile se encarga de definir un archivo .vcd para guardar la simulación y $dumpvars se encarga de capturar todas las señales y variables durante la simulación para su visualización posteriormente.
+
 
 
 ### Otros modulos
