@@ -167,15 +167,26 @@ endmodule
 #### 3.2.2. Parámetros
 
 1.DISPLAY_REFRESH: Define la cantidad de ciclos de reloj para refrescar el display.
+
 2.WIDTH_DISPLAY_COUNTER: Calcula el número de bits necesarios para contar hasta DISPLAY_REFRESH.
+
 3.clk_i: Señal de reloj que sincroniza las operaciones del módulo.
+
 4.rst_i: Señal de reinicio para inicializar los registros.
+
 5.bcd_i [7:0]: Entrada de 8 bits que contiene el valor en BCD a mostrar (dos dígitos).
+
 6.anodo_o [1:0]: Controla qué dígito del display está activo.
+
 7.catodo_o [6:0]: Controla los segmentos del display para representar el dígito en BCD.
+
+
 8.cuenta_salida: Contador de refresco para el display.
+
 9.digito_o [3:0]: Registro que almacena el dígito actual a mostrar en el display.
+
 10.en_conmutador: Señal que indica cuándo cambiar entre dígitos.
+
 11.decena_unidad [1:0]: Registro que indica si se está mostrando la unidad o la decena.
 
 #### 3.2.3. Entradas y salidas:
