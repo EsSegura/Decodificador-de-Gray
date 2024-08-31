@@ -197,7 +197,7 @@ Controla los cátodos de los segmentos del display de 7 segmentos. Esta señal d
 Diagramas, texto explicativo...
 
 ### 3.3 Módulo 3
-#### 3.3.1. Encabezado del módulo
+#### 3.3.1. module_bin_to_bcd
 ```SystemVerilog
 module module_bin_to_bcd #(
     parameter WIDTH = 4
@@ -329,7 +329,7 @@ endmodule
 Diagramas, texto explicativo...
 
 ### 4. Testbench
-Con los modulos listos, se trabajo en un testbench para pdoer ejecutar todo de la misma forma y al mismo tiempo, y con ello, poder observar las simulaciones y obtener una mejor visualización de como funciona todo el código. 
+Con los modulos listos, se trabajo en un testbench para poder ejecutar todo de la misma forma y al mismo tiempo, y con ello, poder observar las simulaciones y obtener una mejor visualización de como funciona todo el código. 
 ```SystemVerilog
 `timescale 1ns/1ns
 
