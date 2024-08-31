@@ -127,7 +127,7 @@ endmodule
 11.decena_unidad [1:0]: Registro que indica si se está mostrando la unidad o la decena.
 
 #### 3.1.3. Entradas y salidas:
-# Descripción de la entrada:
+##### Descripción de la entrada:
 - `clk_i `
 Señal de reloj. Esta señal sincroniza todas las operaciones internas del módulo. Es una señal de tipo input, normalmente conectada al reloj del sistema. Su frecuencia determina la velocidad de actualización del display de 7 segmentos.
 - `rst_i`
@@ -135,7 +135,7 @@ Señal de reinicio. Se utiliza para restablecer el módulo a su estado inicial. 
 - `bcd_i [7:0]`
 Entrada de 8 bits que contiene el valor en BCD (Binary-Coded Decimal) para el display. Los 4 bits menos significativos (bcd_i[3:0]) representan el dígito de las unidades y los 4 bits más significativos (bcd_i[7:4]) representan el dígito de las decenas. Esta entrada determina qué números se mostrarán en los dos dígitos del display de 7 segmentos.
 
-# Descripción de la salida:
+##### Descripción de la salida:
 - `anodo_o [1:0]`
 Controla los ánodos de los dos dígitos del display de 7 segmentos. Esta señal indica qué dígito está actualmente activado para la visualización. Solo uno de los dos valores posibles (2'b10 o 2'b01) estará activo en un momento dado, permitiendo la multiplexión entre los dígitos. La salida es de 2 bits, donde cada combinación de bits enciende un dígito específico del display
 - `catodo_o [6:0]`
