@@ -511,7 +511,9 @@ Este módulo toma un código Gray de 4 bits, lo convierte a binario y luego a BC
 
 ![image](https://github.com/user-attachments/assets/05d0f397-2e95-41e6-b3d8-099ba000e531)
 
-## 6. Problemas encontrados durante el proyecto
+
+## 6. Observaciones/Aclaraciones
+## 7. Problemas encontrados durante el proyecto
 
 Durante el desarrollo del proyecto se encontraron varios problemas técnicos que fueron resueltos mediante ajustes en el diseño. Primero, se adquirieron displays de 7 segmentos de ánodo común, ya que la programación original estaba diseñada para este tipo de displays, corrigiendo así el problema de visualización que se presentó con los displays de cátodo común. . Además, se intentó implementar la conversión de binario a BCD utilizando compuertas lógicas, pero se emplearon terminologías incorrectas como "case", lo que resultó en una reducción de puntos por parte del profesor. Finalmente, se implementó un módulo de sincronización para asegurar que solo se mostrara el número correspondiente en el display en lugar de intentar encender ambos números simultáneamente. 
 
