@@ -342,7 +342,8 @@ Entrada que recibe el número binario que se desea convertir a BCD. La longitud 
  Salida que proporciona la representación BCD del número binario de entrada. Está formada por dos grupos de 4 bits: Bits [3:0]: Representan las unidades del número en formato BCD. Bits [7:4]: Representan las decenas del número en formato BCD. Los valores se actualizan en los flancos ascendentes del reloj (clk_i) y están sincronizados con el reset (rst_i).
 
 #### 3.3.4. Criterios de diseño
-Diagramas, texto explicativo...
+El módulo module_bin_to_bcd convierte una entrada binaria de 4 bits a BCD y sincroniza las salidas con el reloj del sistema. Utiliza lógica combinacional para asignar los valores de las unidades y las decenas basados en la entrada binaria, y registra estos valores con el reloj para garantizar una salida estable y sincronizada. Esto es especialmente útil en aplicaciones donde los números binarios necesitan ser representados en displays de 7 segmentos u otros sistemas que requieren BCD.
+ Se utiliza una instrucción case para asignar valores de unidades y decenas en función de la entrada binaria bin_i. Los valores de unidades y decenas se calculan para cada valor posible de bin_i (0 a 15). En el caso por defecto, ambos se establecen en 0. Para la sincronización, cuando rst_i está bajo (activo), los registros unidades_sync y decenas_sync se reinician a 0, si rst_i no está activo, los registros sincronizan los valores de unidades y decenas con el reloj. Para la lógica de salida si rst_i está bajo, la salida bcd_o se restablece a 0, en caso contrario, bcd_o se actualiza con los valores sincronizados de unidades_sync y decenas_sync, donde los bits [3:0] corresponden a las unidades y los bits [7:4] a las decenas.
 
 
 ### 4. Testbench
