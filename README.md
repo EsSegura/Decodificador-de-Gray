@@ -416,9 +416,9 @@ module test;
 endmodule
 ```
 #### Descripción del testbench 
--El testbench cuenta con; una directiva de tiempo a una de escala de 1 nanosegundo a 1 nanosegundo, tres entradas de registros, siendo el reloj inicializado en 0, un reset y una entrada de código Gray de 4 bits, tres salidas que corresponden a cables que capturan las salidas del módulo bajo prueba, los cuales son anodo_o que controla los ánodos del display de 7 segmentos, catodo_o la cual funciona similar pero en este controlando los cátodos del display, finalmemte codigo_bin_led_o salida del codigo binario a los LEDs.
-- Instanciación
-- 
+El testbench cuenta con; una directiva de tiempo a una de escala de 1 nanosegundo a 1 nanosegundo, tres entradas de registros, siendo el reloj inicializado en 0, un reset y una entrada de código Gray de 4 bits, tres salidas que corresponden a cables que capturan las salidas del módulo bajo prueba, los cuales son anodo_o que controla los ánodos del display de 7 segmentos, catodo_o la cual funciona similar pero en este controlando los cátodos del display, finalmemte codigo_bin_led_o salida del codigo binario a los LEDs.
+. Instanciación
+
 
 ### Otros modulos
 En este apartado, se colocará el ultimo modulo, el cual corresponde a la unión de los tres modulos para poder ejecutar un Makefile de manera correcta.
