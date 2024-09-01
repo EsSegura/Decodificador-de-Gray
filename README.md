@@ -353,6 +353,9 @@ El módulo module_bin_to_bcd convierte una entrada binaria de 4 bits a BCD, que 
  
  Por último, para la lógica de salida, si rst_i está bajo entonces la salida bcd_o se restablece a 0, en caso contrario, bcd_o se actualiza con los valores sincronizados de unidades_sync y decenas_sync donde los bits [3:0] corresponden a las unidades y los bits [7:4] a las decenas.
 
+ ![Diagrama de bloques para bin to BCD](https://github.com/user-attachments/assets/cbe0f1f5-5fdb-4c21-9042-4d4ac1ce6812)
+
+
 
 ### 4. Testbench
 Con los modulos listos, se trabajo en un testbench para poder ejecutar todo de la misma forma y al mismo tiempo, y con ello, poder observar las simulaciones y obtener una mejor visualización de como funciona todo el código. 
