@@ -80,7 +80,8 @@ endmodule
 #### 3.1.4. Criterios de diseño
 ![Diagrama de gray to bin decoder](https://github.com/user-attachments/assets/7e91c164-f2bf-44fe-9dbb-b73324f14cdf)
 
-![Diagrama de bloques de gray to bin decoder](https://github.com/user-attachments/assets/ca3d522a-c5bf-4a4d-b588-fab2aa05b662)
+![Diagrama de bloques de gray to bin decoder](https://github.com/user-attachments/assets/bea007d6-6945-47e3-96f7-4eebd333a3e6)
+
 
 
 
