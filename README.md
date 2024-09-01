@@ -200,6 +200,9 @@ Controla los cátodos de los segmentos del display de 7 segmentos. Esta señal d
 #### 3.2.4. Criterios de diseño
 Diagramas, texto explicativo...
 
+![Diagrama de bloques para 7 segments](https://github.com/user-attachments/assets/ef69c07c-cfba-4398-b04a-a17f83456829)
+
+
 ### 3.3 Módulo 3
 #### 3.3.1. module_bin_to_bcd
 ```SystemVerilog
