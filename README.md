@@ -563,7 +563,8 @@ Este módulo toma un código Gray de 4 bits, lo convierte a binario y luego a BC
 
 Ahora describiendo un poco el proceso realizado por cada submódulo en conjunto, primeramente el submódulo module_input_deco_gray recibe el código Gray de entrada (codigo_gray_pi) y lo convierte a un código binario equivalente cuya salida resultante se almacena en codigo_bin. Seguido de esto, el submódulo module_bin_to_bcd toma la salida binaria (codigo_bin) y la convierte en un valor BCD la cual se almacena en codigo_bcd. Finalmente, el submódulo module_7_segments recibe la entrada BCD (codigo_bcd) y a través de las señales anodo_po y catodo_po controla los segmentos del display de 7 segmentos, con esto el valor BCD convertido se visualiza de manera legible en el display correspondiente, ya sea unidades o decenas. 
 
-![Diagrama de bloques para top deco gray](https://github.com/user-attachments/assets/9a4686ef-e5ff-47a5-b37b-3093b16dd18f)
+![Diagrama de bloques para top deco gray](https://github.com/user-attachments/assets/99ed4bb7-94bf-4ebb-a78b-5d93ffc771fd)
+
 
 
 ## 5. Consumo de recursos
