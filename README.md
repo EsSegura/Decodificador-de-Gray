@@ -1,8 +1,10 @@
 # Decodificador de Gray
 ### Estudiantes:
-Christian Aparicio Cambronero
-Eric Castro Velazquez
-Esteban Segura García 
+-Christian Aparicio Cambronero
+
+-Eric Castro Velazquez
+
+-Esteban Segura García 
 ## 1. Abreviaturas y definiciones
 - **FPGA**: Field Programmable Gate Arrays
 
